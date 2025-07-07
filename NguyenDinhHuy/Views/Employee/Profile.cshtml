@@ -1,0 +1,20 @@
+﻿@model NguyenDinhHuy.Models.User
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h3 class="text-center mb-4">👤 Thông tin cá nhân</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Họ tên:</strong> @Model.FullName</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>Chức vụ:</strong> @Model.Position</p>
+            <p><strong>Phòng ban:</strong> @Model.Department</p>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Dashboard", "Employee")" class="btn btn-secondary mt-4">Quay lại</a>
+</div>

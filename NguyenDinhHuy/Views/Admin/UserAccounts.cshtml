@@ -1,0 +1,48 @@
+﻿@model List<NguyenDinhHuy.Models.User>
+
+@{
+    ViewData["Title"] = "Quản lý tài khoản nhân viên";
+}
+
+<h2>Quản lý tài khoản nhân viên</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã NV</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Phòng ban</th>
+            <th>Chức vụ</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.EmployeeCode</td>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Department</td>
+                <td>@user.Position</td>
+                <td>
+                    @(user.IsActive == true ? "Đã kích hoạt" : "Chưa kích hoạt")
+                </td>
+                <td>
+                    @if (user.IsActive == false)
+                    {
+                        <a asp-action="Activate" asp-route-id="@user.Id" class="btn btn-sm btn-success">
+                            Kích hoạt
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Đã kích hoạt</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

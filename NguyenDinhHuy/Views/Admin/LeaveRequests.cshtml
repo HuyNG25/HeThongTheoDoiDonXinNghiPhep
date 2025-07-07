@@ -1,0 +1,59 @@
+﻿@model List<NguyenDinhHuy.Models.LeaveRequest>
+@{
+    ViewBag.Title = "Danh sách đơn xin nghỉ phép";
+}
+
+<h2>📋 Danh sách đơn xin nghỉ phép</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã nhân viên</th>
+            <th>Họ tên</th>
+            <th>Phòng ban</th>
+            <th>Ngày gửi</th>
+            <th>Số ngày nghỉ</th>
+            <th>Lý do</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || Model.Count == 0)
+        {
+            <tr>
+                <td colspan="9" class="text-center">Không có đơn xin nghỉ nào.</td>
+            </tr>
+        }
+        else
+        {
+            int stt = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@stt</td>
+                    <td>@(item.User?.EmployeeCode ?? "N/A")</td>
+                    <td>@(item.User?.FullName ?? "N/A")</td>
+                    <td>@(item.User?.Department ?? "N/A")</td>
+                    <td>@(item.RequestDate.HasValue? item.RequestDate.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                    <td>@(item.TotalDays.HasValue? item.TotalDays.Value.ToString() : "N/A")</td>
+                    <td>@(string.IsNullOrWhiteSpace(item.Reason) ? "Chưa có lý do" : item.Reason)</td>
+                    <td>@(string.IsNullOrWhiteSpace(item.Status) ? "Không rõ" : item.Status)</td>
+                    <td>
+                        @if (item.Status == "Chờ duyệt")
+                        {
+                            <a asp-action="Approve" asp-route-id="@item.Id" class="btn btn-success btn-sm">Duyệt</a>
+                            <a asp-action="Reject" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Từ chối</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Đã xử lý</span>
+                        }
+                    </td>
+                </tr>
+                stt++;
+            }
+        }
+    </tbody>
+</table>

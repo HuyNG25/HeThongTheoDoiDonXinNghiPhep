@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Bảng điều khiển nhân viên";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Chào mừng bạn đến với hệ thống theo dõi đơn xin nghỉ phép</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <a href="@Url.Action("CreateLeaveRequest", "Employee")" class="btn btn-primary btn-block mb-3">
+                📝 Tạo đơn xin nghỉ
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("LeaveHistory", "Employee")" class="btn btn-primary btn-block mb-3">
+                📅 Lịch sử xin nghỉ
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("Notifications", "Employee")" class="btn btn-primary btn-block mb-3">
+                🔔 Thông báo
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("Profile", "Employee")" class="btn btn-primary btn-block mb-3">
+                👤 Thông tin cá nhân
+            </a>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Logout", "Employee")" class="btn btn-outline-danger">🚪 Đăng xuất</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .btn-block {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>

@@ -1,0 +1,23 @@
+﻿@model List<NguyenDinhHuy.Models.Notification>
+@{
+    ViewData["Title"] = "Thông báo từ quản trị viên";
+}
+
+<h2>Thông báo</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Không có thông báo nào.</div>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var noti in Model)
+        {
+            <li class="list-group-item">
+                <strong>@(noti.SentDate.HasValue? noti.SentDate.Value.ToString("dd/MM/yyyy HH:mm") : "Chưa gửi")</strong><br />
+                <span style="color: red; font-weight: bold;">@noti.Message</span>
+            </li>
+        }
+    </ul>
+}

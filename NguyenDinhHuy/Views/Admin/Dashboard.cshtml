@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Bảng điều khiển Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">👨‍💼 BẢNG ĐIỀU KHIỂN QUẢN TRỊ VIÊN</h2>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card border-primary shadow">
+                <div class="card-body">
+                    <h5 class="card-title">📄 Danh sách đơn xin nghỉ phép</h5>
+                    <p class="card-text">Xem, duyệt hoặc từ chối các đơn nghỉ của nhân viên.</p>
+                    <a href="@Url.Action("LeaveRequests", "Admin")" class="btn btn-primary">Truy cập</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card border-success shadow">
+                <div class="card-body">
+                    <h5 class="card-title">👥 Quản lý tài khoản nhân viên</h5>
+                    <p class="card-text">Kích hoạt tài khoản cho nhân viên mới đăng ký.</p>
+                    <a href="@Url.Action("UserAccounts", "Admin")" class="btn btn-primary">Truy cập</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card border-warning shadow">
+                <div class="card-body">
+                    <h5 class="card-title">📊 Quản lý số dư ngày phép</h5>
+                    <p class="card-text">Kiểm tra số ngày nghỉ đã dùng và gửi cảnh báo nếu cần.</p>
+                    <a href="@Url.Action("LeaveBalances", "Admin")" class="btn btn-primary">Truy cập</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card border-danger shadow">
+                <div class="card-body">
+                    <h5 class="card-title">🚪 Đăng xuất</h5>
+                    <p class="card-text">Thoát khỏi hệ thống và quay lại trang đăng nhập.</p>
+                    <a href="@Url.Action("Logout", "Admin")" class="btn btn-danger">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

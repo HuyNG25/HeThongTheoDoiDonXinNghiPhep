@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Tạo đơn xin nghỉ phép";
+}
+
+<h2 class="text-center mt-4">📝 Tạo đơn xin nghỉ phép</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<form asp-action="CreateLeaveRequest" method="post" class="mt-4">
+    <div class="form-group">
+        <label>Mã nhân viên</label>
+        <input class="form-control" value="@ViewBag.EmployeeCode" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Họ và tên</label>
+        <input class="form-control" value="@ViewBag.FullName" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Phòng ban</label>
+        <input class="form-control" value="@ViewBag.Department" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Số ngày nghỉ</label>
+        <input name="totalDays" class="form-control" type="number" min="1" required />
+    </div>
+
+    <div class="form-group">
+        <label>Lý do nghỉ</label>
+        <textarea name="reason" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Gửi đơn</button>
+</form>

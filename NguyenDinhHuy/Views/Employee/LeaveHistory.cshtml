@@ -1,0 +1,43 @@
+﻿@model List<NguyenDinhHuy.Models.LeaveRequest>
+@{
+    ViewBag.Title = "Lịch sử nghỉ phép";
+}
+
+<div class="container mt-4">
+    <h3 class="text-center mb-4">📅 Lịch sử đơn nghỉ phép</h3>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">Bạn chưa gửi đơn xin nghỉ nào.</div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Loại nghỉ</th>
+                    <th>Từ ngày</th>
+                    <th>Đến ngày</th>
+                    <th>Số ngày</th>
+                    <th>Ngày gửi</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(string.IsNullOrEmpty(item.LeaveType) ? "Không xác định" : item.LeaveType)</td>
+                        <td>@(item.FromDate.HasValue? item.FromDate.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                        <td>@(item.ToDate.HasValue? item.ToDate.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                        <td>@(item.TotalDays.HasValue? item.TotalDays.Value.ToString() : "N/A")</td>
+                        <td>@(item.RequestDate.HasValue? item.RequestDate.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a href="@Url.Action("Dashboard", "Employee")" class="btn btn-secondary mt-3">Quay lại</a>
+</div>
